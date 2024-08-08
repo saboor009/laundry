@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { ContactUs } from './form';
 import FareCalculator from './FareCalculator';
@@ -8,16 +8,30 @@ import './App.css';
 
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const navRef = useRef(null);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
 
+  const handleClickOutside = (event) => {
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      setIsNavOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
-          <nav className="navbar">
+          <nav className="navbar" ref={navRef}>
             <div className="logo">
               <Link to="/">Laundry Solutions</Link>
             </div>
@@ -32,7 +46,7 @@ const App = () => {
               <li><Link to="/about">About</Link></li>
               <li>
                 <Link to="/collect-cloth" className="collect-cloth-button">
-                  Collect Cloth
+                  Collect Clothes
                 </Link>
               </li>
             </ul>
