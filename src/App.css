@@ -12,7 +12,7 @@ body {
   color: #fff;
   padding: 10px 20px;
   position: relative;
-  box-shadow: 0 4px 8px rgba(9, 6, 6, 0.175);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -30,12 +30,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px; /* Add padding for alignment */
-  position: relative; 
+  padding: 0 20px;
+  position: relative;
   height: 60px;
-   /* Add shadow effect */
+  z-index: 10; /* Ensure navbar is above other content */
 }
-
 
 .nav-links {
   list-style: none;
@@ -43,6 +42,7 @@ body {
   margin: 0;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
 }
 
 .nav-links li {
@@ -53,37 +53,36 @@ body {
   color: #fff;
   text-decoration: none;
   font-size: 18px;
-  position: relative; /* Needed for positioning the pseudo-element */
+  position: relative;
   transition: transform 0.3s;
-  color: inherit;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -3px; /* Adjust space between text and underline */
-  height: 2px; /* Thickness of the underline */
+  bottom: -3px;
+  height: 2px;
   width: 100%;
-  background-color: #fff; /* Color of the underline */
-  transform: scaleX(0); /* Initially hidden underline */
+  background-color: #fff;
+  transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s;
 }
 
 .nav-links a:hover::after {
-  transform: scaleX(1); /* Show underline on hover */
+  transform: scaleX(1);
 }
 
 .nav-links a:hover {
-  transform: scale(1.05); /* Slightly grow on hover */
+  transform: scale(1.05);
 }
 
 .menu-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  z-index: 1; /* Ensure it is above other elements */
+  z-index: 20; /* Ensure it is above other elements */
 }
 
 .bar {
@@ -95,31 +94,33 @@ body {
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: row; /* Keep items in a row */
-    align-items: center; /* Align items vertically in the center */
+    flex-direction: row;
+    align-items: center;
   }
 
   .nav-button-container {
     display: flex;
-    align-items: center; /* Center items vertically */
+    align-items: center;
     width: 100%;
     position: relative;
   }
 
   .nav-links {
-    display: none; /* Hide menu items initially */
+    display: none;
     flex-direction: column;
     width: 100%;
     position: absolute;
-    top: 60px; /* Adjust based on header height */
+    top: 60px;
     left: 0;
-    background-color: #333;
-    padding: 0;
+    background-color: #26a8e8;
+    padding-bottom: 16px;
     margin: 0;
+    z-index: 15; 
+    border-radius: 8px;/* Ensure menu is above other content but below the menu toggle */
   }
 
   .nav-links.active {
-    display: flex; /* Show menu items when active */
+    display: flex;
   }
 
   .nav-links li {
@@ -130,29 +131,29 @@ body {
   .menu-toggle {
     display: flex;
     position: absolute;
-    right: 20px; /* Align to the right of the navbar */
-    top: 10px; /* Adjust top position as needed */
+    right: 20px;
+    top: 10px;
+    z-index: 20; /* Ensure it is above the menu */
   }
 
   .collect-cloth-button {
-    margin-left: 24px; /* Space between button and nav items */
+    margin-left: 24px;
   }
 }
 
 .collect-cloth-button {
-  background-color: #7681f1; /* Background color */
-  color: #fff; /* Text color */
+  background-color: #7681f1;
+  color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
   font-size: 18px;
-  margin-left: 15px; /* Space between button and other nav items */
-  transition: background-color 0.3s; /* Smooth background color change on hover */
+  margin-left: 15px;
+  transition: background-color 0.3s;
 }
 
-
 .collect-cloth-button:hover {
-  background-color: #5a48ec; /* Darker shade on hover */
+  background-color: #5a48ec;
 }
 
 .App-logo {

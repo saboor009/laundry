@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { ContactUs } from './form';
-import FareCalculator from './FareCalculator'; // Import the FareCalculator component
-import About from './About'; // Import the About component
-import Home from './Home'; // Import the Home component
+import FareCalculator from './FareCalculator';
+import About from './About';
+import Home from './Home';
 import './App.css';
 
 const App = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -15,23 +21,21 @@ const App = () => {
             <div className="logo">
               <Link to="/">Laundry Solutions</Link>
             </div>
-            <div className="menu-toggle">
+            <div className="menu-toggle" onClick={toggleNav}>
               <span className="bar"></span>
               <span className="bar"></span>
               <span className="bar"></span>
             </div>
-            <div className="nav-button-container">
-              <ul className="nav-links">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/fare">Fare</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li>
-                  <Link to="/collect-cloth" className="collect-cloth-button">
-                    Collect Cloth
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            <ul className={`nav-links ${isNavOpen ? 'active' : ''}`}>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/fare">Fare</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li>
+                <Link to="/collect-cloth" className="collect-cloth-button">
+                  Collect Cloth
+                </Link>
+              </li>
+            </ul>
           </nav>
         </header>
         
