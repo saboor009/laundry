@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .home-page {
+    text-align: center;
+  }
+  
+  .home-hero {
+    background: url('https://via.placeholder.com/1600x600') no-repeat center center/cover;
+    color: #fff;
+    padding: 100px 20px;
+    position: relative;
+    
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button.prices-button {
+    
+    background-color: #26a8e8; /* Blue color for Check Our Prices */
+  }
+  
+  .cta-button.collect-button {
+    background-color: #757ff0; /* Orange color for Collect Your Cloth */
+  }
+  
+  .cta-button.prices-button:hover {
+    background-color: #0f8dcd; /* Darker blue on hover */
+  }
+  
+  .cta-button.collect-button:hover {
+    
+    background-color: #5a46ec;/* Darker orange on hover */
+  }
+  
+  .home-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background-color: #fff;
+  }
+  
+  .service {
+    flex: 1;
+    max-width: 300px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #e0e9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #2d2d2d;
+  }
+  
+  .service p {
+    font-size: 16px;
+    color: #333333d3;
+  }
+  
+  .home-footer {
+    padding: 20px;
+    background-color: #24a6e8;
+    color: #fff;
+  }
+  

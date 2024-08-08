@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #24a6e8;
+  color: #fff;
+  padding: 10px 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(9, 6, 6, 0.175);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Add padding for alignment */
+  position: relative; 
+  height: 60px;
+   /* Add shadow effect */
+}
+
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 16px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative; /* Needed for positioning the pseudo-element */
+  transition: transform 0.3s;
+  color: inherit;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Adjust space between text and underline */
+  height: 2px; /* Thickness of the underline */
+  width: 100%;
+  background-color: #fff; /* Color of the underline */
+  transform: scaleX(0); /* Initially hidden underline */
+  transform-origin: bottom right;
+  transition: transform 0.3s;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1); /* Show underline on hover */
+}
+
+.nav-links a:hover {
+  transform: scale(1.05); /* Slightly grow on hover */
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1; /* Ensure it is above other elements */
+}
+
+.bar {
+  background-color: #fff;
+  height: 3px;
+  width: 25px;
+  margin: 3px 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row; /* Keep items in a row */
+    align-items: center; /* Align items vertically in the center */
+  }
+
+  .nav-button-container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    width: 100%;
+    position: relative;
+  }
+
+  .nav-links {
+    display: none; /* Hide menu items initially */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    left: 0;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show menu items when active */
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    right: 20px; /* Align to the right of the navbar */
+    top: 10px; /* Adjust top position as needed */
+  }
+
+  .collect-cloth-button {
+    margin-left: 24px; /* Space between button and nav items */
+  }
+}
+
+.collect-cloth-button {
+  background-color: #7681f1; /* Background color */
+  color: #fff; /* Text color */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none; /* Remove underline */
+  font-size: 18px;
+  margin-left: 15px; /* Space between button and other nav items */
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+}
+
+
+.collect-cloth-button:hover {
+  background-color: #5a48ec; /* Darker shade on hover */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}

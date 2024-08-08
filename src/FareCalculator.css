@@ -1,0 +1,50 @@
+/* FareCalculator.css */
+
+/* General Styles for Fare Calculator */
+.fare-calculator {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .fare-calculator h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .fare-item {
+    margin-bottom: 15px;
+  }
+  
+  .fare-item label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .fare-item input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .fare-item input:focus {
+    border-color: #5a48ec;
+    outline: none;
+  }
+  
+  .fare-total h3 {
+    color: #5a48ec;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  

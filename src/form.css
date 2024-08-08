@@ -1,0 +1,59 @@
+.contact-form-container {
+  max-width: 500px; /* Reduced max-width for a more compact layout */
+  margin: 24px auto;
+  padding: 15px; /* Reduced padding */
+  background-color: #fff; /* Match FareCalculator background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Match FareCalculator shadow */
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.contact-form label {
+  margin-bottom: 6px; /* Reduced margin */
+  font-weight: bold;
+  font-size: 14px; /* Smaller font size */
+  color: #333; /* Match text color */
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px; /* Reduced padding */
+  margin-bottom: 12px; /* Reduced margin */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px; /* Smaller font size */
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 80px; /* Reduced min-height */
+}
+
+.submit-button {
+  background-color:#7681f1; /* Match FareCalculator button color */
+  color: #fff;
+  padding: 10px 15px; /* Reduced padding */
+  border: none;
+  height: 48px;
+  border-radius: 4px;
+  font-size: 16px; /* Smaller font size */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #5a48ec; /* Darker shade on hover */
+}
+
+.feedback-message {
+  margin-top: 15px; /* Reduced margin */
+  font-size: 14px; /* Smaller font size */
+  color: #333; /* Match text color */
+}
