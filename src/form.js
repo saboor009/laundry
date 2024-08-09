@@ -33,8 +33,8 @@ export const ContactUs = ({ fareDetails }) => {
                   (shalwarKameezCount * PRICES.shalwarKameez) +
                   (undergarmentCount * PRICES.undergarment);
     setTotalBill(total);
-  }, [shirtCount, pantCount, shalwarKameezCount, undergarmentCount, PRICES.shirt, PRICES.pant, PRICES.shalwarKameez, PRICES.undergarment]);
-  
+  }, [shirtCount, pantCount, shalwarKameezCount, undergarmentCount]);
+
   // Function to send email
   const sendEmail = (e) => {
     e.preventDefault();
@@ -58,14 +58,22 @@ export const ContactUs = ({ fareDetails }) => {
       .then(
         () => {
           setMessage('SUCCESS! Your message has been sent.');
-          form.current.reset(); // Clear the form after successful submission
+          // Reset the form fields
+          form.current.reset();
+          // Reset state values
+          setShirtCount(0);
+          setPantCount(0);
+          setShalwarKameezCount(0);
+          setUndergarmentCount(0);
+          setTotalBill(0);
+          // Optionally reload the page (uncomment the next line if needed)
+          // window.location.reload();
         },
         (error) => {
           setMessage(`FAILED... ${error.text}`);
         }
       );
   };
-  
 
   return (
     <div className="contact-form-container">
