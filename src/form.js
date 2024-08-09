@@ -33,7 +33,8 @@ export const ContactUs = ({ fareDetails }) => {
                   (shalwarKameezCount * PRICES.shalwarKameez) +
                   (undergarmentCount * PRICES.undergarment);
     setTotalBill(total);
-  }, [shirtCount, pantCount, shalwarKameezCount, undergarmentCount]);
+  }, [shirtCount, pantCount, shalwarKameezCount, undergarmentCount, PRICES.shirt, PRICES.pant, PRICES.shalwarKameez, PRICES.undergarment]);
+  
 
   // Function to send email
   const sendEmail = (e) => {
