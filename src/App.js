@@ -1,67 +1,105 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { ContactUs } from './form';
-import FareCalculator from './FareCalculator';
-import About from './About';
-import Home from './Home';
-import './App.css';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import './form.css'; // Import your CSS for styling
 
-const App = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const navRef = useRef(null);
+export const ContactUs = ({ fareDetails }) => {
+  const form = useRef();
+  const [message, setMessage] = useState('');
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    const userEmail = form.current.user_email.value; // Get the user's email from the form
+
+    // Send the initial email (e.g., to your service email)
+    emailjs
+      .sendForm('service_89uaknh', 'template_hfj3kne', form.current, {
+        publicKey: 'yC0k7Hw98QUgTLJjN',
+      })
+      .then(
+        () => {
+          setMessage('SUCCESS! Your message has been sent.');
+          form.current.reset(); // Clear the form after successful submission
+          
+          // Send a confirmation email to the user
+          emailjs.send('service_89uaknh', 'template_cae8vpi', {
+            user_name: form.current.user_name.value,
+            user_email: userEmail,
+            shirts: fareDetails?.shirtCount || 0,
+            pants: fareDetails?.pantCount || 0,
+            shalwar_kameez: fareDetails?.shalwarKameezCount || 0,
+            undergarments: fareDetails?.undergarmentCount || 0,
+          }, 'yC0k7Hw98QUgTLJjN')
+          .then(() => {
+            console.log('Confirmation email sent successfully');
+          })
+          .catch((error) => {
+            console.error('Failed to send confirmation email', error);
+          });
+        },
+        (error) => {
+          setMessage(`FAILED... ${error.text}`);
+        }
+      );
   };
-
-  const handleClickOutside = (event) => {
-    if (navRef.current && !navRef.current.contains(event.target)) {
-      setIsNavOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <nav className="navbar" ref={navRef}>
-            <div className="logo">
-              <Link to="/">Laundry Solutions</Link>
-            </div>
-            <div className="menu-toggle" onClick={toggleNav}>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-            </div>
-            <ul className={`nav-links ${isNavOpen ? 'active' : ''}`}>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/fare">Prices</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li>
-                <Link to="/collect-cloth" className="collect-cloth-button">
-                 Place Order
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/fare" element={<FareCalculator />} />
-          <Route path="/collect-cloth" element={<ContactUs />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="contact-form-container">
+      <form ref={form} onSubmit={sendEmail} className="contact-form">
+        <label htmlFor="user_name">Name</label>
+        <input type="text" id="user_name" name="user_name" required />
+
+        <label htmlFor="user_email">Email</label>
+        <input type="email" id="user_email" name="user_email" required />
+
+        <label htmlFor="phone_number">Phone Number</label>
+        <input type="tel" id="phone_number" name="phone_number" required />
+
+        <label htmlFor="location">Location</label>
+        <input type="text" id="location" name="location" required />
+
+        <label htmlFor="shirts">Shirts</label>
+        <input
+          type="number"
+          id="shirts"
+          name="shirts"
+          value={fareDetails?.shirtCount || 0}
+          readOnly
+        />
+
+        <label htmlFor="pants">Pants</label>
+        <input
+          type="number"
+          id="pants"
+          name="pants"
+          value={fareDetails?.pantCount || 0}
+          readOnly
+        />
+
+        <label htmlFor="shalwar_kameez">Shalwar Kameez</label>
+        <input
+          type="number"
+          id="shalwar_kameez"
+          name="shalwar_kameez"
+          value={fareDetails?.shalwarKameezCount || 0}
+          readOnly
+        />
+
+        <label htmlFor="undergarments">Undergarments</label>
+        <input
+          type="number"
+          id="undergarments"
+          name="undergarments"
+          value={fareDetails?.undergarmentCount || 0}
+          readOnly
+        />
+
+        <label htmlFor="message">Message</label>
+        <textarea id="message" name="message" required />
+
+        <button type="submit" className="submit-button">Collect Clothes</button>
+      </form>
+      {message && <p className="feedback-message">{message}</p>}
+    </div>
   );
 };
-
-export default App;
