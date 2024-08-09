@@ -11,7 +11,7 @@ const Home = () => {
           <p>Your one-stop solution for all your laundry needs. We offer quick, reliable, and affordable laundry services to make your life easier.</p>
           <div className="cta-buttons">
             <a href="/fare" className="cta-button prices-button">Check Our Prices</a>
-            <a href="/collect-cloth" className="cta-button collect-button">Collect Your Cloth</a>
+            <a href="/collect-cloth" className="cta-button collect-button">Order Now!</a>
           </div>
         </div>
       </section>

@@ -42,11 +42,11 @@ const App = () => {
             </div>
             <ul className={`nav-links ${isNavOpen ? 'active' : ''}`}>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/fare">Fare</Link></li>
+              <li><Link to="/fare">Prices</Link></li>
               <li><Link to="/about">About</Link></li>
               <li>
                 <Link to="/collect-cloth" className="collect-cloth-button">
-                  Collect Clothes
+                 Place Order
                 </Link>
               </li>
             </ul>

@@ -2,9 +2,13 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import './form.css'; // Import your CSS for styling
 
-export const ContactUs = () => {
+export const ContactUs = ({ fareDetails }) => {
   const form = useRef();
   const [message, setMessage] = useState('');
+  const [shirtCount, setShirtCount] = useState(fareDetails?.shirtCount || 0);
+  const [pantCount, setPantCount] = useState(fareDetails?.pantCount || 0);
+  const [shalwarKameezCount, setShalwarKameezCount] = useState(fareDetails?.shalwarKameezCount || 0);
+  const [undergarmentCount, setUndergarmentCount] = useState(fareDetails?.undergarmentCount || 0);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -39,10 +43,46 @@ export const ContactUs = () => {
         <label htmlFor="location">Location</label>
         <input type="text" id="location" name="location" required />
 
+        <label htmlFor="shirts">Shirts</label>
+        <input
+          type="number"
+          id="shirts"
+          name="shirts"
+          value={shirtCount}
+          onChange={(e) => setShirtCount(Number(e.target.value))}
+        />
+
+        <label htmlFor="pants">Pants</label>
+        <input
+          type="number"
+          id="pants"
+          name="pants"
+          value={pantCount}
+          onChange={(e) => setPantCount(Number(e.target.value))}
+        />
+
+        <label htmlFor="shalwar_kameez">Shalwar Kameez</label>
+        <input
+          type="number"
+          id="shalwar_kameez"
+          name="shalwar_kameez"
+          value={shalwarKameezCount}
+          onChange={(e) => setShalwarKameezCount(Number(e.target.value))}
+        />
+
+        <label htmlFor="undergarments">Undergarments</label>
+        <input
+          type="number"
+          id="undergarments"
+          name="undergarments"
+          value={undergarmentCount}
+          onChange={(e) => setUndergarmentCount(Number(e.target.value))}
+        />
+
         <label htmlFor="message">Message</label>
         <textarea id="message" name="message" required />
 
-        <button type="submit" className="submit-button">Collect Clothes</button>
+        <button type="submit" className="submit-button">Order </button>
       </form>
       {message && <p className="feedback-message">{message}</p>}
     </div>

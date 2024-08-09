@@ -23,7 +23,7 @@ const FareCalculator = () => {
 
   return (
     <div className="fare-calculator">
-      <h2>Fare Calculator</h2>
+      <h2>Price Calculator</h2>
       <div className="fare-item">
         <label>Pants (₨{PRICE_PANTS} each):</label>
         <input
@@ -61,7 +61,7 @@ const FareCalculator = () => {
         />
       </div>
       <div className="fare-total">
-        <h3>Total Fare: ₨{calculateTotalFare()}</h3>
+        <h3>Total Price: ₨{calculateTotalFare()}</h3>
       </div>
     </div>
   );
