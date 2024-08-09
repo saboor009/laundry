@@ -35,13 +35,26 @@ export const ContactUs = ({ fareDetails }) => {
     setTotalBill(total);
   }, [shirtCount, pantCount, shalwarKameezCount, undergarmentCount, PRICES.shirt, PRICES.pant, PRICES.shalwarKameez, PRICES.undergarment]);
   
-
   // Function to send email
   const sendEmail = (e) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm('service_89uaknh', 'template_hfj3kne', form.current, 'yC0k7Hw98QUgTLJjN')
+  
+    const emailParams = {
+      user_name: form.current.user_name.value,
+      user_email: form.current.user_email.value,
+      phone_number: form.current.phone_number.value,
+      location: form.current.location.value,
+      message: form.current.message.value,
+      shirts: shirtCount,
+      pants: pantCount,
+      shalwar_kameez: shalwarKameezCount,
+      undergarments: undergarmentCount,
+      total_amount: totalBill, // Use the actual totalBill calculated
+    };
+  
+    console.log(emailParams); // Log the params to confirm they are correct
+  
+    emailjs.send('service_89uaknh', 'template_hfj3kne', emailParams, 'yC0k7Hw98QUgTLJjN')
       .then(
         () => {
           setMessage('SUCCESS! Your message has been sent.');
@@ -52,6 +65,7 @@ export const ContactUs = ({ fareDetails }) => {
         }
       );
   };
+  
 
   return (
     <div className="contact-form-container">
