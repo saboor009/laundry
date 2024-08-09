@@ -108,7 +108,7 @@ export const ContactUs = ({ fareDetails }) => {
 
         {/* Display the bill */}
         <div className="bill-summary">
-          <p>Total Bill: Rs{totalBill}</p>
+          <p>Total Bill: Rs.{totalBill}</p>
         </div>
 
         <button type="submit" className="submit-button">Order</button>
